@@ -35,7 +35,7 @@ public class RecognitionController {
             RecognitionResult result = recognitionService.recognise(imagePath, minConfidence, topTwoMinGap);
             return ResponseEntity.ok(result);
         } catch (Exception e) {
-            log.debug("Exception in recognize Api", e);
+          //  log.debug("Exception in recognize Api", e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to Recognize Due to some error.");
         }
 

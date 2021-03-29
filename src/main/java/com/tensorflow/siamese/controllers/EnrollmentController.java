@@ -41,7 +41,7 @@ public class EnrollmentController {
             User user = enrollmentService.enrollNew(imagePaths, name);
             return ResponseEntity.ok(user);
         } catch (Exception e) {
-            log.debug("Exception in enrollNew Api", e);
+         //   log.debug("Exception in enrollNew Api", e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to Enroll Due to some error.");
         }
 
