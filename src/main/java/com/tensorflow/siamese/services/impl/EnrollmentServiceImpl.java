@@ -40,13 +40,13 @@ public class EnrollmentServiceImpl implements EnrollmentService {
                 .collect(Collectors.toList());
         List<Double> embedding = matrixMean(embeddingsList);
 
-        User user = new User()
-                .name(name)
-                .numImages(images.size())
-                .created(Instant.now())
-                .embedding(objectMapper.writeValueAsString(embedding));
-        userRepository.save(user);
-        log.info("created new user: " + user.id());
+        User user = new User();
+        		user.setName(name);
+                user.setNumImages(images.size());
+                user.setCreated(Instant.now());
+                user.setEmbedding(objectMapper.writeValueAsString(embedding));
+                userRepository.save(user);
+       // log.info("created new user: " + user.id());
         return user;
     }
 
@@ -58,10 +58,10 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         if (null == user) {
             throw new Exception("user doesnt exist");
         }
-        int savedNumImage = user.numImages();
+        int savedNumImage = user.getNumImages();
         int extraImagesNum = images.size();
 
-        List<Double> savedEmbeddings = objectMapper.readValue(user.embedding(), new TypeReference<List<Double>>() {
+        List<Double> savedEmbeddings = objectMapper.readValue(user.getEmbedding(), new TypeReference<List<Double>>() {
         });
 
         List<List<Double>> embeddingsList = images
@@ -70,12 +70,12 @@ public class EnrollmentServiceImpl implements EnrollmentService {
                 .collect(Collectors.toList());
         List<Double> embedding = matrixMean(embeddingsList);
 
-        user.modified(Instant.now())
-                .numImages(savedNumImage + extraImagesNum)
-                .embedding(objectMapper.writeValueAsString(weightedMean(savedEmbeddings, savedNumImage
+        user.setModified(Instant.now());
+        user.setNumImages(savedNumImage + extraImagesNum);
+        user.setEmbedding(objectMapper.writeValueAsString(weightedMean(savedEmbeddings, savedNumImage
                         , embedding, extraImagesNum)));
         userRepository.save(user);
-        log.info("updated user: " + user.id());
+      //  log.info("updated user: " + user.id());
         return user;
     }
 

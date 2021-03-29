@@ -19,7 +19,13 @@ import java.util.List;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class RecognitionResult {
 
-    List<Pair<User, Double>> userList;
+    public RecognitionResult(List<Pair<User, Double>> userList, User bestMatch) {
+		super();
+		this.userList = userList;
+		this.bestMatch = bestMatch;
+	}
+
+	List<Pair<User, Double>> userList;
 
     User bestMatch;
 }

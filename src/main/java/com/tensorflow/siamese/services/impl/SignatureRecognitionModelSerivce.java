@@ -30,7 +30,7 @@ public class SignatureRecognitionModelSerivce implements TfModelServingService {
         if (!optSession.isPresent()) {
             SavedModelBundle modelBundle = SavedModelBundle.load(path, "serve");
             session = modelBundle.session();
-            log.info("Starting TF session with model-wo-pre from: " + path);
+       //     log.info("Starting TF session with model-wo-pre from: " + path);
         }
     }
 

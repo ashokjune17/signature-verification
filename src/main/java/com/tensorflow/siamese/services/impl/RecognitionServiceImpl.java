@@ -52,7 +52,7 @@ public class RecognitionServiceImpl implements RecognitionService {
         List<Pair<User, Double>> userMatches = new ArrayList<>();
 
         for (User user : allUsers) {
-            List<Double> userEmb = objectMapper.readValue(user.embedding(), new TypeReference<List<Double>>() {
+            List<Double> userEmb = objectMapper.readValue(user.getEmbedding(), new TypeReference<List<Double>>() {
             });
             userMatches.add(new Pair<>(user, euclideanDistance(imageEmb, userEmb)));
         }
