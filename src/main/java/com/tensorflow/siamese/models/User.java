@@ -1,6 +1,8 @@
 package com.tensorflow.siamese.models;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.core.JsonParser;
+
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
@@ -43,4 +45,56 @@ public class User {
 
     @LastModifiedDate
     private Instant modified;
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getNumImages() {
+		return numImages;
+	}
+
+	public void setNumImages(int numImages) {
+		this.numImages = numImages;
+	}
+
+	public String getEmbedding() {
+		return embedding;
+	}
+
+	public void setEmbedding(String embedding) {
+		this.embedding = embedding;
+	}
+
+	public Instant getCreated() {
+		return created;
+	}
+
+	public void setCreated(Instant created) {
+		this.created = created;
+	}
+
+	public Instant getModified() {
+		return modified;
+	}
+
+	public void setModified(Instant modified) {
+		this.modified = modified;
+	}
+
+   
+       
+    
 }
